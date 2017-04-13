@@ -91,6 +91,7 @@
         
         [self addSubview:label];
     }
+    NSLog(@"%s  %f", __func__, _totalWidth);
 }
 
 - (void)setupSelectedLabel {
@@ -128,6 +129,7 @@
         _minimumSpacing = (self.bounds.size.width - _totalWidth)/self.titles.count;
         self.contentSize = self.bounds.size;
     } else {
+        _minimumSpacing = self.style.minimumSpacing;
         self.contentSize = CGSizeMake(_totalWidth+self.style.minimumSpacing*self.titles.count, self.bounds.size.height);
     }
 }
