@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'JHSegmentView'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of JHSegmentView.'
+  s.summary          = '一个选项卡控件'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,9 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description      = '一个封装的选项卡控件，跑起来看就知道啦'
 
   s.homepage         = 'https://github.com/mshqiu/JHSegmentView'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
