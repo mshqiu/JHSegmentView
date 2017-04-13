@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JHSegmentView_Example' do
+  pod 'JHSegmentView', :path => '../'
+
+  target 'JHSegmentView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
