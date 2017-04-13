@@ -1,0 +1,6 @@
+framework module JHSegmentView {
+  umbrella header "JHSegmentView-umbrella.h"
+
+  export *
+  module * { export * }
+}

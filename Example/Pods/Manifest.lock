@@ -1,0 +1,16 @@
+PODS:
+  - JHSegmentView (0.1.0)
+
+DEPENDENCIES:
+  - JHSegmentView (from `../`)
+
+EXTERNAL SOURCES:
+  JHSegmentView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JHSegmentView: bd70fe3a6ded99bf233f74bdcceadafbe0c5ca86
+
+PODFILE CHECKSUM: cfd035d8f6486d45b7037a72645137b6b6555a8d
+
+COCOAPODS: 1.1.1
