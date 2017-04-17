@@ -54,6 +54,8 @@
     
     headerView.segmentDelegate = contentView;
     contentView.delegate = headerView;
+    
+    headerView.selectedIndex = 3;
 }
 
 - (void)viewWillLayoutSubviews {

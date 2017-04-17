@@ -91,7 +91,6 @@
         
         [self addSubview:label];
     }
-    NSLog(@"%s  %f", __func__, _totalWidth);
 }
 
 - (void)setupSelectedLabel {
@@ -141,11 +140,16 @@
         return;
     }
     
+    [self switchToIndex:targetLabel.tag - 10000];
+}
+
+- (void)switchToIndex:(NSUInteger)index {
+    UILabel *targetLabel = [self viewWithTag:index+10000];
     UILabel *selectedLabel = [self viewWithTag:_selectedIndex+10000];
     selectedLabel.textColor = self.style.normalColor;
     
     targetLabel.textColor = self.style.selectedColor;
-    _selectedIndex = targetLabel.tag - 10000;
+    _selectedIndex = index;
     
     // 缩放
     [UIView animateWithDuration:0.2 animations:^{
@@ -163,6 +167,14 @@
     if ([self.segmentDelegate respondsToSelector:@selector(segmentHeaderViewDidSelectItemAtIndex:)]) {
         [self.segmentDelegate segmentHeaderViewDidSelectItemAtIndex:_selectedIndex];
     }
+}
+
+- (void)setSelectedIndex:(NSUInteger)selectedIndex {
+    if (selectedIndex >= self.titles.count || _selectedIndex == selectedIndex) {
+        return;
+    }
+    
+    [self switchToIndex:selectedIndex];
 }
 
 - (void)animateFromTitleAtIndex:(NSUInteger)index toIndex:(NSUInteger)toIndex progress:(CGFloat)progress {
@@ -240,20 +252,6 @@
     return offset;
 }
 
-- (void)layoutBottomLineToLabelAtIndexIfNeeded:(NSUInteger)index {
-    if (!self.style.showBottomLine) {
-        return;
-    }
-    
-    UILabel *targetLabel = [self viewWithTag:index+10000];
-    UIView *bottomLine = [self viewWithTag:9999];
-    
-    CGRect frame = CGRectMake(targetLabel.frame.origin.x, CGRectGetMaxY(self.bounds)-self.style.bottomLineHeight, targetLabel.frame.size.width, self.style.bottomLineHeight);
-    if (!CGRectEqualToRect(frame, bottomLine.frame)) {
-        bottomLine.frame = frame;
-    }
-}
-
 - (void)layoutBottomLineToLabelAtIndex:(NSUInteger)index animated:(BOOL)animated {
     if (animated) {
         [UIView animateWithDuration:0.2 animations:^{
@@ -275,7 +273,7 @@
     if (progress < 0 || progress > 1) {
         progress = 1;
     }
-//    NSLog(@"%s  %d --> %d  %f", __func__, index, toIndex, progress);
+
     UILabel *sourceLabel = [self viewWithTag:index+10000];
     UILabel *targetLabel = [self viewWithTag:toIndex+10000];
     UIView *bottomLine = [self viewWithTag:9999];
